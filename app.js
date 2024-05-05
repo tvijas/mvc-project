@@ -17,7 +17,7 @@ const PORT = 3000;
 
 const authentication = require("./routes/authentication")
 const homeRoutes = require("./routes/home");
-const bookRouter = require("./routes/book")
+const bookRouter = require("./routes/book");
 
 app.use(authentication);
 app.use('/',homeRoutes);

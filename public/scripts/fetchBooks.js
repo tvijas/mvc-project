@@ -13,17 +13,18 @@ fetch('http://localhost:3000/books/getList/0/10', {
         for (let i = 0; i < 10; i++) {
             // Create elements to display book information
             const bookDiv = document.createElement('div');
-
+            bookDiv.setAttribute("class","book_container")
+            //<p><span className="book_description">${jsonData[i].book_description}</span></p>
             bookDiv.innerHTML = `
             <p style="display: none">${jsonData[i].id}</p>
             <span class="book_image"><img src="${jsonData[i].book_image}" alt="Book Image"></span>
             <p><span class="book_name">${jsonData[i].book_name}</span></p>
             <p><span class="book_author">${jsonData[i].book_author}</span></p>
-            <p><span class="book_description">${jsonData[i].book_description}</span></p>
             <p>Genre: <span class="book_genre">${jsonData[i].book_genre}</span></p>
             <p>Rating: <span class="book_rating">${jsonData[i].book_rating}</span></p>
             <button class="editButton">Edit</button>
             <button class="saveButton" style="display: none">Save</button>
+            <button class="descriptionButton" title="${jsonData[i].book_description}">?</button>
             <hr>
             `;
 
