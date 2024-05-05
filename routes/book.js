@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.get("/getList/:begin/:end",bookController.getList);
 router.post("/add",bookController.add);
-router.post("/update", bookController.update);
+router.patch("/update", bookController.update);
+router.delete("/delete", bookController.deleteBook);
 
 module.exports = router;

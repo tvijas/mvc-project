@@ -16,7 +16,7 @@ body {
     margin-right: 200px;
 }
 
-#books input[type="text"], #books input[type="textarea"]{
+#books input[type="text"], #books input[type="textarea"] {
     background-color: #ffffff;
     border: 2px solid #302550;
     color: #000000;
@@ -29,11 +29,11 @@ body {
     transition: background-color 0.15s, color 0.15s, box-shadow 0.15s;
 }
 
-
 .book_name {
     font-family: "Arial Black", serif;
     color: #cdecff;
 }
+
 .book_image img {
     margin-top: 13px;
     width: 166px;
@@ -55,6 +55,7 @@ body {
     margin-top: -5px;
     transition: background-color 0.15s, color 0.15s, box-shadow 0.15s;
 }
+
 .editButton:hover, .saveButton:hover {
     background-color: white;
     color: #5ABBBB;
@@ -65,11 +66,25 @@ body {
 .editButton:hover, .saveButton:hover {
     color: #3f8585;
 }
+
 .book_container {
     background-color: #3f8585;
     border: 2px solid black;
     text-align: center;
 }
+
 .saveButton {
     display: none;
 }
+
+.forms {
+    position: relative;
+    background-color: #cdecff;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(166px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+

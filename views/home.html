@@ -8,33 +8,70 @@
 <body>
 <!-- Elements to display book information -->
 <div id="books"></div>
+<script src="/scripts/fetchBooks.js"></script>
 
-<script src = "/scripts/fetchBooks.js"></script>
+<br>
 
-<h2>Add Book</h2>
-<form id="addBookForm" >
-    <label for="image">Book Image:</label><br>
-    <input type="file" id="image" name="image"><br>
+<div class="forms">
+    <div id="add_form">
+        <h2>Add Book</h2>
+        <form id="addBookForm">
+            <label for="image">Book Image:</label><br>
+            <input type="file" id="image" name="image"><br>
 
-    <label for="bookName">Book Name:</label><br>
-    <input type="text" id="bookName" name="bookName"><br>
+            <label for="bookName">Book Name:</label><br>
+            <input type="text" id="bookName" name="bookName"><br>
 
-    <label for="author">Author:</label><br>
-    <input type="text" id="author" name="author"><br>
+            <label for="author">Author:</label><br>
+            <input type="text" id="author" name="author"><br>
 
-    <label for="description">Description:</label><br>
-    <textarea id="description" name="description"></textarea><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description"></textarea><br>
 
-    <label for="genre">Genre:</label><br>
-    <input type="text" id="genre" name="genre"><br>
+            <label for="genre">Genre:</label><br>
+            <input type="text" id="genre" name="genre"><br>
 
-    <label for="rating">Rating:</label><br>
-    <input type="number" min="1" max="10" step="0" id="rating" name="rating"><br>
+            <label for="rating">Rating:</label><br>
+            <input type="number" min="1" max="10" step="0" id="rating" name="rating"><br>
 
-    <button type="submit">Add Book</button>
-</form>
+            <button type="submit">Add book</button>
+        </form>
+    </div>
+    <div id="edit_form">
+        <!-- Your JavaScript code goes here -->
+        <h2>Edit book</h2>
+        <form id="editBookForm">
+            <label for="image">Book Image:</label><br>
+            <input type="file" id="edit_image" name="image"><br>
 
-<!-- Your JavaScript code goes here -->
-<script  src = "/scripts/addBook.js"></script>
+            <label for="bookName">Book Name:</label><br>
+            <input type="text" id="edit_bookName" name="bookName"><br>
+
+            <label for="author">Author:</label><br>
+            <input type="text" id="edit_author" name="author"><br>
+
+            <label for="description">Description:</label><br>
+            <textarea id="edit_description" name="description"></textarea><br>
+
+            <label for="genre">Genre:</label><br>
+            <input type="text" id="edit_genre" name="genre"><br>
+
+            <label for="rating">Rating:</label><br>
+            <input type="number" min="1" max="10" step="0" id="edit_rating" name="rating"><br>
+
+            <button type="submit">Edit book</button>
+        </form>
+        <script src="/scripts/addBook.js"></script>
+    </div>
+    <div id="delete_book">
+        <h2>Delete book</h2>
+        <form id="deleteBookForm">
+            <label for="delete_bookName">Delete book</label><br>
+            <input type="text" id="delete_bookName" name="bookName"><br>
+            <button type="submit">Delete book</button>
+        </form>
+        <script src ="/scripts/deleteBook.js"></script>
+    </div>
+</div>
 </body>
 </html>

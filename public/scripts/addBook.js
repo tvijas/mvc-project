@@ -1,4 +1,3 @@
-
 document.getElementById('addBookForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent form submission
 
