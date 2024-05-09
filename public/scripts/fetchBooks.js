@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/books/getList/0/10', {
+fetch('http://localhost:3000/book/0/10', {
     method : 'GET',
     credentials: 'same-origin',
 }) // Assuming this endpoint returns an array of books
@@ -11,13 +11,12 @@ fetch('http://localhost:3000/books/getList/0/10', {
         const booksContainer = document.getElementById('books');
 
         for (let i = 0; i < 10; i++) {
-            // Create elements to display book information
             const bookDiv = document.createElement('div');
             bookDiv.setAttribute("class","book_container")
             //<p><span className="book_description">${jsonData[i].book_description}</span></p>
             bookDiv.innerHTML = `
-            <p style="display: none">${jsonData[i].id}</p>
-            <span class="book_image"><img src="${jsonData[i].book_image}" alt="Book Image"></span>
+            <p class="book_id" style="display: none">${jsonData[i].id}</p>
+            <span class="book_image"><img src="${jsonData[i].book_image}" alt="No image"></span>
             <p><span class="book_name">${jsonData[i].book_name}</span></p>
             <p><span class="book_author">${jsonData[i].book_author}</span></p>
             <p>Genre: <span class="book_genre">${jsonData[i].book_genre}</span></p>
@@ -27,16 +26,10 @@ fetch('http://localhost:3000/books/getList/0/10', {
             <button class="descriptionButton" title="${jsonData[i].book_description}">?</button>
             <hr>
             `;
-
-            // Append the book information to the books container
             booksContainer.appendChild(bookDiv);
 
-            // Назначение обработчиков событий после создания кнопок
             const editButton = bookDiv.querySelector('.editButton');
-            const saveButton = bookDiv.querySelector('.saveButton');
-
             editButton.addEventListener('click', handleEditButtonClick);
-            saveButton.addEventListener('click', handleSaveButtonClick);
         }
     })
     .catch(error => {
@@ -46,114 +39,27 @@ fetch('http://localhost:3000/books/getList/0/10', {
 // Обработчик нажатия на кнопку Edit
 function handleEditButtonClick(event) {
     const bookDiv = event.target.closest('div');
-    const editButton = bookDiv.querySelector('.editButton');
-    const saveButton = bookDiv.querySelector('.saveButton');
-    const fields = bookDiv.querySelectorAll('span');
+    let image = bookDiv.querySelector('img:first-child').src;
+    let bookId = bookDiv.querySelector("p:first-child").textContent;
+    let bookName = bookDiv.querySelector(".book_name").innerText;
+    let author = bookDiv.querySelector(".book_author").innerText;
+    let genre = bookDiv.querySelector(".book_genre").innerText;
+    let rating = bookDiv.querySelector(".book_rating").innerText;
+    let description = bookDiv.querySelector(".descriptionButton").title;
+4
+    let edit_image_preview = document.getElementById("edit_image_preview")
+    let edit_bookId = document.getElementById("edit_bookId");
+    let edit_bookName = document.getElementById('edit_bookName');
+    let edit_author = document.getElementById('edit_author');
+    let edit_description = document.getElementById('edit_description');
+    let edit_genre = document.getElementById('edit_genre');
+    let edit_rating = document.getElementById('edit_rating');
 
-    editButton.style.display = 'none';
-    saveButton.style.display = 'inline-block';
-
-    fields.forEach(field => {
-        const input = document.createElement('input');
-        switch (field.classList[0]) {
-            case 'book_image':
-                const img = document.createElement('img');
-                img.src = field.querySelector('img').src; // Сохраняем ссылку на изображение
-                const imageContainer = document.createElement('span');
-                const inputFile = document.createElement('input')
-                inputFile.type = 'file';
-                inputFile.id = 'image';
-                imageContainer.appendChild(img);
-                field.appendChild(document.createElement('br'));
-                imageContainer.appendChild(inputFile)
-                field.replaceWith(imageContainer);
-                break;
-            case 'book_name':
-                input.type = 'text';
-                input.id = 'bookName';
-                input.value = field.textContent;
-                break;
-            case 'book_author':
-                input.type = 'text';
-                input.id = 'author';
-                input.value = field.textContent;
-                break;
-            case 'book_description':
-                input.type = 'textarea';
-                input.id = 'description';
-                input.value = field.textContent;
-                break;
-            case 'book_genre':
-                input.type = 'text';
-                input.id = 'genre';
-                input.value = field.textContent;
-                break;
-            case 'book_rating':
-                input.type = 'number';
-                input.min = '1';
-                input.max = '10';
-                input.step = '0';
-                input.id = 'rating';
-                input.value = field.textContent;
-                break;
-            default:
-                break;
-        }
-        field.textContent = '';
-        field.appendChild(document.createElement('br'));
-        field.appendChild(input);
-    })
-}
-
-// Обработчик нажатия на кнопку Save
-function handleSaveButtonClick(event) {
-    const bookDiv = event.target.closest('div');
-    const editButton = bookDiv.querySelector('.editButton');
-    const saveButton = bookDiv.querySelector('.saveButton');
-    const fields = bookDiv.querySelectorAll('span');
-
-    editButton.style.display = 'inline-block';
-    saveButton.style.display = 'none';
-
-    const data = {
-        id: bookDiv.querySelector('p:first-child').textContent,
-        book_image: fields[0].querySelector('img').src,
-        book_name: fields[1].querySelector('input').value,
-        book_author: fields[2].querySelector('input').value,
-        book_description: fields[3].querySelector('input').value,
-        book_genre: fields[4].querySelector('input').value,
-        book_rating: fields[5].querySelector('input').value
-    };
-    console.log(data)
-    sendData(data);
-    location.reload()
-
-    function sendData(data) {
-        // Отправка данных на сервер
-        fetch('http://localhost:3000/books/update', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Data sent successfully');
-                    // Здесь вы можете обновить данные, если сервер что-то вернет
-                } else {
-                    console.error('Failed to send data');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
-
-    // Обновление отображения
-    fields.forEach(field => {
-        const value = field.querySelector('input').value;
-        field.textContent = value;
-    });
-
+    edit_image_preview.src = image;
+    edit_bookId.textContent = bookId;
+    edit_bookName.value = bookName;
+    edit_author.value = author;
+    edit_description.value = description;
+    edit_genre.value = genre;
+    edit_rating.value = rating;
 }

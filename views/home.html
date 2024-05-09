@@ -7,6 +7,7 @@
 </head>
 <body>
 <!-- Elements to display book information -->
+<br>
 <div id="books"></div>
 <script src="/scripts/fetchBooks.js"></script>
 
@@ -14,64 +15,60 @@
 
 <div class="forms">
     <div id="add_form">
-        <h2>Add Book</h2>
+        <h2 class= "formTitle">Add Book</h2>
         <form id="addBookForm">
-            <label for="image">Book Image:</label><br>
-            <input type="file" id="image" name="image"><br>
+            <img id="add_book_preview" src=""><br>
+            <br><input type="file" id="image" name="image"><br>
 
-            <label for="bookName">Book Name:</label><br>
-            <input type="text" id="bookName" name="bookName"><br>
+            <input type="text" id="bookName" name="bookName" placeholder="Name of the book"><br>
 
-            <label for="author">Author:</label><br>
-            <input type="text" id="author" name="author"><br>
+            <input type="text" id="author" name="author" placeholder="Author name"><br>
 
-            <label for="description">Description:</label><br>
-            <textarea id="description" name="description"></textarea><br>
+            <textarea id="description" name="description" placeholder="Description"></textarea><br>
 
-            <label for="genre">Genre:</label><br>
-            <input type="text" id="genre" name="genre"><br>
+            <input type="text" id="genre" name="genre" placeholder="Book genre"><br>
 
             <label for="rating">Rating:</label><br>
             <input type="number" min="1" max="10" step="0" id="rating" name="rating"><br>
 
-            <button type="submit">Add book</button>
+            <br><button class="editButton" type="submit">Add book</button>
         </form>
+        <script src="/scripts/addBook.js"></script>
     </div>
     <div id="edit_form">
         <!-- Your JavaScript code goes here -->
-        <h2>Edit book</h2>
+        <h2 class= "formTitle">Edit book</h2>
         <form id="editBookForm">
-            <label for="image">Book Image:</label><br>
-            <input type="file" id="edit_image" name="image"><br>
+            <img id="edit_image_preview" src=""><br>
+            <p id="edit_bookId" style="display: none"></p>
 
-            <label for="bookName">Book Name:</label><br>
-            <input type="text" id="edit_bookName" name="bookName"><br>
+            <br><input type="file" id="edit_image" name="image"><br>
 
-            <label for="author">Author:</label><br>
+            <input type="text" id="edit_bookName" name="bookName" ><br>
+
             <input type="text" id="edit_author" name="author"><br>
 
-            <label for="description">Description:</label><br>
             <textarea id="edit_description" name="description"></textarea><br>
 
-            <label for="genre">Genre:</label><br>
             <input type="text" id="edit_genre" name="genre"><br>
 
             <label for="rating">Rating:</label><br>
             <input type="number" min="1" max="10" step="0" id="edit_rating" name="rating"><br>
 
-            <button type="submit">Edit book</button>
+            <br><button class="editButton" type="submit">Edit book</button>
         </form>
-        <script src="/scripts/addBook.js"></script>
+        <script src="/scripts/editBook.js"></script>
     </div>
     <div id="delete_book">
-        <h2>Delete book</h2>
+        <h2 class= "formTitle">Delete book</h2>
         <form id="deleteBookForm">
             <label for="delete_bookName">Delete book</label><br>
-            <input type="text" id="delete_bookName" name="bookName"><br>
-            <button type="submit">Delete book</button>
+            <input type="text" id="delete_bookName" name="bookName" placeholder="Put the book name to delete"><br>
+            <br><button class="editButton" type="submit">Delete</button>
         </form>
         <script src ="/scripts/deleteBook.js"></script>
     </div>
 </div>
+<br>
 </body>
 </html>

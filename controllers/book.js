@@ -1,5 +1,4 @@
 const db = require("../dataBase/requests")
-const {deleteBookByName} = require("../dataBase/requests");
 const getList = (req, res) => {
     const user_token = req.cookies.userId
     try {
@@ -18,11 +17,11 @@ const getList = (req, res) => {
         res.status(500).json({error: 'Internal server error'});
     }
 }
-const update = (res, req) => {
-    const user_token = req.cookies.userId
-    const {id, book_image, book_name, book_author, book_description, book_genre, book_rating} = req.body;
+const update = (req,res) => {
+    const user_token = req.cookies.userId;
+    const {image , bookName , author , description , genre , rating ,book_id } = req.body;
     try {
-        db.updateBook(book_image, book_name, book_author, book_description, book_genre, book_rating, id, user_token)
+        db.updateBook(image, bookName, author, description, genre, rating, book_id, user_token)
             .then(result => {
                 res.status(200)
             })
@@ -35,6 +34,7 @@ const update = (res, req) => {
     }
 }
 const add = (req, res) => {
+    console.log(req.body)
     const user_token = req.cookies.userId
     const {image, bookName, author, description, genre, rating} = req.body;
     db.addBook(image, bookName, author, description, genre, rating, user_token)

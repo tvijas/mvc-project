@@ -6,7 +6,7 @@ document.getElementById('deleteBookForm').addEventListener('submit', function(ev
     const bookName= formData.get('bookName');
 
         // Make POST request to add the book
-        fetch('http://localhost:3000/books/delete', {
+        fetch('http://localhost:3000/book/', {
             credentials: 'same-origin',
             method: 'DELETE',
             headers: {

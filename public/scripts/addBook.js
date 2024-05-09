@@ -20,7 +20,7 @@ document.getElementById('addBookForm').addEventListener('submit', function(event
         jsonData.image = imageDataUrl;
 
         // Make POST request to add the book
-        fetch('http://localhost:3000/books/add', {
+        fetch('http://localhost:3000/book/', {
             credentials: 'same-origin',
             method: 'POST',
             headers: {
