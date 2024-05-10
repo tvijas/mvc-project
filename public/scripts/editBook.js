@@ -1,5 +1,5 @@
 document.getElementById('editBookForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     const edit_bookId = document.getElementById('edit_bookId').textContent;
     const formData = new FormData(this);

@@ -1,10 +1,7 @@
 fetch('http://localhost:3000/book/0/10', {
     method : 'GET',
     credentials: 'same-origin',
-}) // Assuming this endpoint returns an array of books
-    .then(response => {
-        return response.json();
-    })
+}).then(response => {return response.json();})
     .then(data => {
         const jsonString = JSON.stringify(data, null, 2)
         const jsonData = JSON.parse(jsonString)
@@ -31,12 +28,11 @@ fetch('http://localhost:3000/book/0/10', {
             const editButton = bookDiv.querySelector('.editButton');
             editButton.addEventListener('click', handleEditButtonClick);
         }
-    })
-    .catch(error => {
+    }).catch(error => {
         console.error('Error fetching book data:', error);
     });
 
-// Обработчик нажатия на кнопку Edit
+
 function handleEditButtonClick(event) {
     const bookDiv = event.target.closest('div');
     let image = bookDiv.querySelector('img:first-child').src;

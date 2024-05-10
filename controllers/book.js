@@ -10,12 +10,12 @@ const getList = (req, res) => {
         res.status(500);
     })
 }
-const update = async (req, res) => {
+const update =  (req, res) => {
     const user_token = req.cookies.userId;
     const book_id = req.body.book_id;
     const book = new Book(req);
 
-    await db.updateBook(book_id, book, user_token).then(() => {
+    db.updateBook(book_id, book, user_token).then(() => {
         res.status(200).send("Book updated successfully");
     }).catch(error => {
         console.log(error);

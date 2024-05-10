@@ -15,8 +15,8 @@ body {
     padding: 20px;
     margin-left: 200px;
     margin-right: 200px;
-    border-radius: 10px; /* Закругляем края */
-    backdrop-filter: blur(10px); /* Размытие для краев */
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
 }
 
 #books input[type="text"], #books input[type="textarea"] {
@@ -95,8 +95,6 @@ body {
 }
 
 .book_container {
-    background-color: #3f8585;
-    border: 2px solid black;
     text-align: center;
 }
 
@@ -113,34 +111,36 @@ body {
     padding: 20px;
     margin-left: 200px;
     margin-right: 200px;
-    border-radius: 10px; /* Закругляем края */
-    backdrop-filter: blur(10px); /* Размытие для краев */
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
 }
 
 .formTitle {
     font-family: "Arial Black", serif;
     color: #262626;
     font-size: 20px;
-    width: 150px; /* Ширина квадрата */
-    height: 50px; /* Высота квадрата */
+    width: 150px;
+    height: 50px;
     text-align: center;
     align-content: center;
     margin-left: 23px;
-    background-color: rgba(85, 255, 237, 0.1); /* Цвет фона квадрата (синий) */
-    border-radius: 10px; /* Закругляем края */
+    background-color: rgba(85, 255, 237, 0.1);
+    border-radius: 10px;
     backdrop-filter: blur(10px)
 }
 
-.forms input[type="file"]{
-    margin-left: 50px;
-}
-.forms input[type="file"]::-webkit-file-upload-button {
-    visibility: hidden;
+.forms .image_label{
+    margin: 0 auto;
+    display: block;
 }
 
-.forms input[type="file"]::before {
-    content: 'Select image';
-    display: inline-block;
+.forms input[type="file"]{
+    display: none;
+}
+.forms .image_label {
+    margin: 0 auto;
+    display: block;
+    width: max-content;
     background: rgba(85, 255, 237, 0.1);
     border: 1px solid #999;
     border-radius: 3px;
@@ -153,19 +153,15 @@ body {
     font-size: 10pt;
 }
 
-.forms input[type="file"]:hover::before {
+.forms .image_label:hover {
     border-color: black;
     border-radius: 3px;
 }
 
-.forms input[type="file"]:active::before {
+.forms .image_label:active{
     background: -webkit-linear-gradient(#f8f8f8, #ece9e9);
 }
 
-.forms div {
-    border: 2px solid black;
-    border-radius: 2px;
-}
 .forms input[type="text"] {
         width: 100%;
         padding: 6px 10px;
@@ -176,6 +172,7 @@ body {
         box-sizing: border-box;
 }
 .forms textarea {
+    resize: none;
     width: 100%;
     padding: 6px 10px;
     margin: 8px 0;
@@ -185,8 +182,27 @@ body {
     box-sizing: border-box;
 }
 .forms img {
-    margin-left: 15px;
+    margin: 0 auto;
+    display: block;
     width: 166px;
     height: 250px;
     object-fit: cover
+}
+.forms input[type="number"]{
+    margin: 0 auto;
+    display: block;
+}
+.forms label[for="rating"]{
+    margin: 0 auto;
+    display: block;
+    width: max-content;
+}
+.forms label[for="delete_bookName"]{
+    margin: 0 auto;
+    display: block;
+    width: max-content;
+}
+.forms button{
+    margin: 0 auto;
+    display: block;
 }

@@ -1,10 +1,8 @@
 document.getElementById('addBookForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
-    // Get form data
     const formData = new FormData(this);
 
-    // Read the selected image file as Data URL
     const imageFile = formData.get('image');
     const fileReader = new FileReader();
     fileReader.onload = function(event) {
@@ -17,7 +15,6 @@ document.getElementById('addBookForm').addEventListener('submit', function(event
             book_genre: formData.get('genre'),
             book_rating: formData.get('rating'),
         };
-        // Make POST request to add the book
         fetch('http://localhost:3000/book/', {
             credentials: 'same-origin',
             method: 'POST',
@@ -31,6 +28,5 @@ document.getElementById('addBookForm').addEventListener('submit', function(event
         }))
     };
 
-    // Read the selected image file
     fileReader.readAsDataURL(imageFile);
 });

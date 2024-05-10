@@ -14,8 +14,6 @@ app.use(express.static('views'));
 app.use('/scripts', express.static(__dirname + '/public/scripts'));
 app.use('/styles', express.static(__dirname + '/public/styles'));
 
-
-
 const authentication = require("./routes/authentication")
 const homeRoutes = require("./routes/home");
 const bookRouter = require("./routes/book");

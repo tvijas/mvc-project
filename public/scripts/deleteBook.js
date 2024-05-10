@@ -1,5 +1,5 @@
 document.getElementById('deleteBookForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     const formData = new FormData(this);
     const bookName = formData.get('bookName');
