@@ -1,9 +1,9 @@
-const db = require("../dataBase/requests");
+const db = require("../dataBase/database");
 const {v4: uuidv4} = require('uuid');
 const authenticate = (req,res,next) =>{
     if (!req.cookies.userId) {
         const userId = uuidv4();
-        db.addUser(userId)
+        db.createUser(userId)
             .then(result => {
                 console.log(result);
             })

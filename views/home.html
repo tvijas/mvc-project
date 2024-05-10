@@ -18,7 +18,17 @@
         <h2 class= "formTitle">Add Book</h2>
         <form id="addBookForm">
             <img id="add_book_preview" src=""><br>
-            <br><input type="file" id="image" name="image"><br>
+            <br><input type="file" id="image" name="image" onchange="fileSelected(event)"><br>
+            <script>
+                function fileSelected(event){
+                    const file = event.target.files[0];
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        document.getElementById('add_book_preview').src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            </script>
 
             <input type="text" id="bookName" name="bookName" placeholder="Name of the book"><br>
 
