@@ -6,25 +6,37 @@
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-<!-- Elements to display book information -->
 <br>
-<div id="books"></div>
-<script src="/scripts/fetchBooks.js"></script>
-
+<div id="books">
+    <% books.forEach(book => { %>
+        <div class="book_container">
+            <p class="book_id" style="display: none"><%= book.id %></p>
+            <span class="book_image"><img src="<%= book.book_image %>" alt="No image"></span>
+            <p><span class="book_name"><%= book.book_name %></span></p>
+            <p><span class="book_author"><%= book.book_author %></span></p>
+            <p>Genre: <span class="book_genre"><%= book.book_genre %></span></p>
+            <p>Rating: <span class="book_rating"><%= book.book_rating %></span></p>
+            <button class="editButton" onclick="handleEditButtonClick(event)">Edit</button>
+            <button class="descriptionButton" title="<%= book.book_description %>">?</button>
+            <hr>
+        </div>
+    <% }); %>
+</div>
+<script src = "/scripts/editButtonHandler.js"></script>
 <br>
 
 <div class="forms">
     <div id="add_form">
         <h2 class= "formTitle">Add Book</h2>
         <form id="addBookForm">
-            <img id="add_book_preview" ><br>
-            <br><label class="image_label" for="image">Select image</label><input type="file" id="image" name="image" onchange="fileSelected(event)"><br>
+            <img id="add_image_preview" ><br>
+            <br><label class="image_label" for="add_image">Select image</label><input type="file" id="add_image" name="image" onchange="addFileSelected(event)"><br>
             <script>
-                function fileSelected(event){
+                function addFileSelected(event){
                     const file = event.target.files[0];
                     const reader = new FileReader();
                     reader.onload = function(event) {
-                        document.getElementById('add_book_preview').src = event.target.result;
+                        document.getElementById('add_image_preview').src = event.target.result;
                     };
                     reader.readAsDataURL(file);
                 }
@@ -50,9 +62,17 @@
         <form id="editBookForm">
             <img id="edit_image_preview"><br>
             <p id="edit_bookId" style="display: none"></p>
-
-            <br><label class="image_label" for="edit_image">Select image</label><input type="file" id="edit_image" name="image"><br>
-
+            <br><label class="image_label" for="edit_image">Select image</label><input type="file" id="edit_image" name="image" onchange="editFileSelected(event)"><br>
+            <script>
+                function editFileSelected(event){
+                    const file = event.target.files[0];
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        document.getElementById('edit_image_preview').src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            </script>
             <input type="text" id="edit_bookName" name="bookName" ><br>
 
             <input type="text" id="edit_author" name="author"><br>

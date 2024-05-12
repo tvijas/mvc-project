@@ -1,11 +1,11 @@
-document.getElementById('addBookForm').addEventListener('submit', function(event) {
+document.getElementById('addBookForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
     const formData = new FormData(this);
 
     const imageFile = formData.get('image');
     const fileReader = new FileReader();
-    fileReader.onload = function(event) {
+    fileReader.onload = function (event) {
 
         const body = {
             book_image: event.target.result,
@@ -22,7 +22,7 @@ document.getElementById('addBookForm').addEventListener('submit', function(event
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
-        }).then(response => response.text().then(text=>{
+        }).then(response => response.text().then(text => {
             alert(text);
             location.reload();
         }))

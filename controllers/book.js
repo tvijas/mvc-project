@@ -1,15 +1,5 @@
-const db = require("../dataBase/database")
-const Book = require("../models/Book")
-const getList = (req, res) => {
-    const user_token = req.cookies.userId
-
-    db.getBooks(user_token).then(data => {
-        res.send(data);
-    }).catch(error => {
-        console.log(error);
-        res.status(500);
-    })
-}
+const db = require("../dataBase/database");
+const Book = require("../models/Book");
 const update =  (req, res) => {
     const user_token = req.cookies.userId;
     const book_id = req.body.book_id;
@@ -23,7 +13,7 @@ const update =  (req, res) => {
     })
 }
 const add = (req, res) => {
-    const user_token = req.cookies.userId
+    const user_token = req.cookies.userId;
     const book = new Book(req);
     console.log(book)
 
@@ -46,7 +36,6 @@ const deleteBook = (req, res) => {
     });
 }
 module.exports = {
-    getList: getList,
     update: update,
     add: add,
     deleteBook: deleteBook

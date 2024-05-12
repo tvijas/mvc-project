@@ -5,16 +5,17 @@ document.getElementById('editBookForm').addEventListener('submit', function (eve
     const formData = new FormData(this);
     formData.append('book_id', edit_bookId);
 
-    const imageFile = formData.get('image');
-    if (!imageFile) {
-        console.error('Please select an image');
-        return;
-    }
+    let imageFile = formData.get('image');
 
     const fileReader = new FileReader();
     fileReader.onload = function (event) {
+        imageFile = event.target.result;
+        if (imageFile.endsWith(',')) {
+            imageFile = document.getElementById("edit_image_preview").src
+        }
+
         const body = {
-            book_image: event.target.result,
+            book_image: imageFile,
             book_name: formData.get('bookName'),
             book_author: formData.get('author'),
             book_description: formData.get('description'),
@@ -29,7 +30,7 @@ document.getElementById('editBookForm').addEventListener('submit', function (eve
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
-        }).then(response => response.text().then(text=>{
+        }).then(response => response.text().then(text => {
             alert(text);
             location.reload();
         }))

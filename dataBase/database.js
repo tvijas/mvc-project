@@ -87,15 +87,8 @@ const UserEntity = sequelize.define('users', {
 async function createBook(book, user_token) {
     return new Promise((resolve, reject) => {
         UserEntity.findOne({where: {user_token: user_token}}).then(userEntity => {
-            Database.create({
-                book_image: book.book_image,
-                book_name: book.book_name,
-                book_author: book.book_author,
-                book_description: book.book_description,
-                book_genre: book.book_genre,
-                book_rating: book.book_rating,
-                user_id: userEntity.id
-            }).then(data => {
+            book.user_id = userEntity.id;
+            Database.create(book).then(data => {
                 resolve(data)
             }).catch(error => {
                 reject(error)
@@ -128,14 +121,7 @@ async function updateBook(book_id, book, user_token) {
     return new Promise((resolve, reject) => {
         UserEntity.findOne({where: {user_token: user_token}}).then(userEntity => {
             Database.findOne({where: {id: book_id, user_id: userEntity.id}}).then(bookEntity => {
-                bookEntity.update({
-                    book_image: book.book_image,
-                    book_name: book.book_name,
-                    book_author: book.book_author,
-                    book_description: book.book_description,
-                    book_genre: book.book_genre,
-                    book_rating: book.book_rating,
-                }).then(data => {
+                bookEntity.update(book).then(data => {
                     resolve(data)
                 }).catch(error => {
                     reject(error)

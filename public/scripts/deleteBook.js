@@ -11,7 +11,7 @@ document.getElementById('deleteBookForm').addEventListener('submit', function (e
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({bookName: bookName})
-    }).then(response => response.text().then(text=>{
+    }).then(response => response.text().then(text => {
         alert(text);
         location.reload();
     }))
