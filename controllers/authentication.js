@@ -1,4 +1,4 @@
-const db = require("../dataBase/database");
+const db = require("../dataBase/requests");
 const {v4: uuidv4} = require('uuid');
 const authenticate = (req,res,next) =>{
     if (!req.cookies.userId) {

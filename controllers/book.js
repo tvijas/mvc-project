@@ -1,4 +1,4 @@
-const db = require("../dataBase/database");
+const db = require("../dataBase/requests");
 const Book = require("../models/Book");
 const update =  (req, res) => {
     const user_token = req.cookies.userId;

@@ -1,5 +1,5 @@
 const path = require("../path")
-const db = require("../dataBase/database")
+const db = require("../dataBase/requests")
 const renderHomePage = (req,res) =>{
     const user_token = req.cookies.userId;
     db.getBooks(user_token).then(books =>{
