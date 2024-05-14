@@ -6,7 +6,7 @@ const renderHomePage = (req,res) =>{
         res.render(path + "/views/renderHome.ejs", { books });
     }).catch(error=>{
         console.log(error);
-        res.send('<Html lang="en"><body<h5>Bad Request</h5></body></Html>')
+        res.send('<Html lang="en"><body><h2>Bad Request</h2><br><h5>Refresh page or clear cookies</h5></body></Html>')
     })
 }
 module.exports = {
