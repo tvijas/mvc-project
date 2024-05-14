@@ -1,6 +1,9 @@
 System zarządzania cyfrową biblioteką
 
-Jak uruchomi program: Pobra
+Jak uruchomi program:
+
+1. run compose.yaml
+2. run app.js
 
 Baza danych: MySQL
 
