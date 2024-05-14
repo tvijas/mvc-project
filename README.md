@@ -22,6 +22,7 @@ Aplikacja ma takie endpointy:
 GET    - "/"      - zwraca glowną stronę
 
 GET    - "/book"  - zwraca liste ksiązek
+
 POST   - "/book"  - dodaje książkę do listy
  |
 Body example:
