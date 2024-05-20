@@ -1,9 +1,23 @@
 System zarządzania cyfrową biblioteką
 
 Jak uruchomi program:
+1. zainstaluj dependecies z pliku package.json za pomocy komandy - npm install
+2. run Docker Descktop
+3. run command: - docker compose up
+4. run command: - node run app.js
+   
+   lub jezeli nie masz docker
 
-1. run compose.yaml
-2. run app.js
+1. zainstaluj dependecies z pliku package.json za pomocy komandy - npm install
+2. run mysql
+3. execute code in mysql from next file - ./init-sql/init.sql
+4. change db connection propeties if nesseccary - ./database/config.js
+5. run - node run app.js
+
+Po uruchomieniu można przejść na następny link: http://localhost:3000/
+
+Przy pirwszym uruchomieniu programu bedzie wyswietlony na stronie text - Error
+Polecam odświerzyć stronę i wszyko będzie dzialalo
 
 Baza danych: MySQL
 
